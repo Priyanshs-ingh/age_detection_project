@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Index Prediction</title>
+</head>
+<body>
+    <h2>Health Index Prediction Form</h2>
+    <form action="/" method="post">
+        <input type="text" name="disease_metric" placeholder="Enter Disease15 value" required="required">
+        <input type="text" name="smoking_rate" placeholder="Enter Smoking_2021 value" required="required">
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction_text %}
+    <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
