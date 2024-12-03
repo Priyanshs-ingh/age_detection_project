@@ -1,25 +1,18 @@
-from flask import Flask, render_template, request, jsonify
-from joblib import load
-import pandas as pd
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import pickle
 
 app = Flask(__name__)
-model = load('health_index_model.joblib')  # Load your trained model from the file
+CORS(app)  # Enable CORS for all domains on all routes
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    prediction_text = ""
-    if request.method == 'POST':
-        try:
-            # Parse inputs for Disease15 and Smoking_2021
-            disease_metric = float(request.form['disease_metric'])
-            smoking_rate = float(request.form['smoking_rate'])
-            # Prepare the DataFrame in the same order as the model expects
-            features_df = pd.DataFrame([[disease_metric, smoking_rate]])
-            prediction = model.predict(features_df)
-            prediction_text = f'Predicted Health Index: {prediction[0]:.2f}'
-        except ValueError:
-            prediction_text = "Please enter valid numbers."
-    return render_template('index.html', prediction_text=prediction_text)
+# Load your trained model
+model = pickle.load(open('final_life_expectancy_model.pkl', 'rb'))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.get_json(force=True)
+    prediction = model.predict([[data['country'], data['age'], data['cigarettes_per_day']]])
+    return jsonify(prediction=int(prediction[0]))
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)

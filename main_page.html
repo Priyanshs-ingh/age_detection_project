@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Expectancy Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            margin: auto;
+        }
+        input, button {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100%;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Life Expectancy Prediction</h1>
+    <form id="predictionForm">
+        <input type="text" id="country" placeholder="Enter your country" required>
+        <input type="number" id="age" placeholder="Enter your age" required>
+        <input type="number" id="cigarettes" placeholder="Cigarettes per day" required>
+        <button type="submit">Predict</button>
+    </form>
+    <p id="result">Prediction result will appear here.</p>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop the form from submitting
+            const country = document.getElementById('country').value;
+            const age = document.getElementById('age').value;
+            const cigarettes = document.getElementById('cigarettes').value;
+
+            // Send data to Flask server
+            fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({country: country, age: age, cigarettes_per_day: cigarettes})
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('result').textContent = 'Predicted Life Expectancy: ' + data.prediction + ' years';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').textContent = 'Failed to get prediction.';
+            });
+        });
+    </script>
+</body>
+</html>
