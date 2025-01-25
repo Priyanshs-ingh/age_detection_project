@@ -39,7 +39,8 @@ Employ cross-validation.   
 Final Model Assessment:
 
 Calculate final MSE on the test set and interpret results.    
-
+Screenshots
+<img src="Image 4" width="500">
 
 Dataset
 The dataset used for this project is sourced from Our World in Data and focuses on smoking-related death rates across different countries and regions over time.    
@@ -51,3 +52,12 @@ Expand the dataset to include more diverse populations.
 Acknowledgments
 Our World in Data for providing the valuable dataset.
 Scikit-learn for the machine learning tools.
+Remember to replace "Image 4" with the actual path to your screenshot.
+
+Key improvements:
+
+Header formatting: Used #, ## for headings to structure the document.
+Emphasis: Used bold (e.g., Key Features) and italics (e.g., Health_Index) for emphasis.
+Lists: Used bullet points for better readability.
+Image resizing: Added width="500" to control the image size.
+Line breaks: Added blank lines to separate sections.
