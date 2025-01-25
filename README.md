@@ -40,7 +40,7 @@ Final Model Assessment:
 
 Calculate final MSE on the test set and interpret results.    
 Screenshots
-<img src="Image 4" width="500">
+<img src="https://github.com/Priyanshs-ingh/age_detection_project/blob/main/Screenshot%202025-01-25%20193652.png">
 
 Dataset
 The dataset used for this project is sourced from Our World in Data and focuses on smoking-related death rates across different countries and regions over time.    
