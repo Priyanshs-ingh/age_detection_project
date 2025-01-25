@@ -6,7 +6,7 @@
 
 This project leverages machine learning to predict health risks associated with smoking in urban areas. By considering factors like age, location, and smoking habits, it provides personalized health assessments and insights into potential health risks.
 
-
+<img src="https://github.com/Priyanshs-ingh/age_detection_project/blob/main/Screenshot%202025-01-25%20193652.png" width="500">
 
 ## Key Features
 
@@ -29,9 +29,7 @@ This project leverages machine learning to predict health risks associated with 
 2.  Install the required packages: `pip install -r requirements.txt`
 3.  Run the main script: `python main.py`
 
-## Contributing
 
-Contributions are welcome! Please feel free to open issues or submit pull requests.
 
 ## Acknowledgments
 
