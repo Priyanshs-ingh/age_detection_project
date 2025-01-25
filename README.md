@@ -1,4 +1,3 @@
-[Image of a banner related to health and urban areas]
 
 # Health Prediction in Urban Areas
 
